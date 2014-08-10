@@ -1,0 +1,3 @@
+[submodule "fortress-ui-vagrant/fortress-in-a-box"]
+	path = fortress-ui-vagrant/fortress-in-a-box
+	url = ssh://git@github.com/selesy/fortress-in-a-box
