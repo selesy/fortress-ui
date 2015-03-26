@@ -1,12 +1,118 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>com.selesy.applications.fortress-ui</groupId>
     <artifactId>fortress-ui-parent</artifactId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
+
   <artifactId>fortress-ui</artifactId>
   <packaging>war</packaging>
   <name>Fortress UI - Web Application</name>
   <description>Provides an HTML5 "single page" application to manage a Fortress RBAC system.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-ioc</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-ui</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-cdi-client</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-javaee-all</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-data-binding</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.errai</groupId>
+      <artifactId>errai-bus</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <outputDirectory>${basedir}/src/main/webapp/WEB-INF/classes</outputDirectory>
+    <!-- To define the plugin version in your parent POM -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>gwt-maven-plugin</artifactId>
+          <version>2.7.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <!-- To use the plugin goals in your POM or parent POM -->
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <!-- <executions> -->
+        <!-- <execution> -->
+        <!-- <goals> -->
+        <!-- <goal>resources</goal> -->
+        <!-- <goal>compile</goal> -->
+        <!-- </goals> -->
+        <!-- </execution> -->
+        <!-- <execution> -->
+        <!-- <id>gwt-clean</id> -->
+        <!-- <phase>clean</phase> -->
+        <!-- <goals> -->
+        <!-- <goal>clean</goal> -->
+        <!-- </goals> -->
+        <!-- </execution> -->
+        <!-- </executions> -->
+        <configuration>
+          <inplace>true</inplace>
+          <logLevel>INFO</logLevel>
+          <runTarget>index.html</runTarget>
+          <!-- <extraJvmArgs>-Xmx1024m -Xss128m</extraJvmArgs> -->
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <!-- <warName>${artifactId}</warName> -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <!-- To use the report goals in your POM or parent POM -->
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.7.0</version>
+      </plugin>
+    </plugins>
+  </reporting>
+
 </project>
